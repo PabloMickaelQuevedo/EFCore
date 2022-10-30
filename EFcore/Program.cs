@@ -1,2 +1,40 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using System;
+using System.Linq;
+using EFcore.Domain;
+using EFcore.ValueObjects;
+using Microsoft.EntityFrameworkCore;
+
+namespace EF.core
+{
+    class Program
+    {
+        static void Main(string[] args, Produto produto)
+        {
+            InserirDados(produto);
+        }
+
+        private static void InserirDados(Produto produto)
+        {
+            var produto = new Produto
+            {
+                Descricao = "Produto Teste",
+                CodigoBarras = "123456789101112",
+                Valor = 10m,
+                TipoProduto = TipoProduto.MercadoriaParaRevenda,
+                Ativo = true
+            };
+
+            using var db = new Data.ApplicationContext();
+            db.Set<Produto>().Add(produto);
+
+            var registros = db.SaveChanges();
+        }
+    }
+}
+
+
+
+
+
+
+
