@@ -15,7 +15,7 @@ namespace EF.core
 
         private static void InserirDados(Produto produto)
         {
-            var produto = new Produto
+            var Produto = new Produto
             {
                 Descricao = "Produto Teste",
                 CodigoBarras = "123456789101112",
@@ -23,11 +23,6 @@ namespace EF.core
                 TipoProduto = TipoProduto.MercadoriaParaRevenda,
                 Ativo = true
             };
-
-            using var db = new Data.ApplicationContext();
-            db.Set<Produto>().Add(produto);
-
-            var registros = db.SaveChanges();
         }
     }
 }
