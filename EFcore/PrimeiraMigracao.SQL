@@ -25,7 +25,7 @@ GO
 CREATE TABLE [Produtos] (
     [Id] int NOT NULL IDENTITY,
     [CodigoBarras] VARCHAR(14) NOT NULL,
-    [Descricao] VARCHAR(60),
+    [Descricao] VARCHAR(60) NOT NULL,
     [Valor] decimal(18,2) NOT NULL,
     [TipoProduto] nvarchar(max) NOT NULL,
     [Ativo] bit NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE [Pedidos] (
     [FinalizadoEm] datetime2 NOT NULL,
     [TipoFrete] int NOT NULL,
     [StatusPedido] nvarchar(max) NOT NULL,
-    [Obersavacao] VARCHAR(512)
+    [Obersavacao] VARCHAR(512) NOT NULL,
     CONSTRAINT [PK_Pedidos] PRIMARY KEY ([Id]),
     CONSTRAINT [FK_Pedidos_Clientes_ClienteId] FOREIGN KEY ([ClienteId]) REFERENCES [Clientes] ([Id]) ON DELETE CASCADE
 );
